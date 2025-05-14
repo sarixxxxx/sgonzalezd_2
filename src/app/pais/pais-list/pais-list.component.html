@@ -1,18 +1,31 @@
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Nombre</th>
-      <th scope="col">Capital</th>
-      <th scope="col">Año de conformación</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let pais of paises">
-      <td> {{pais.id}}</td>
-      <td> {{pais.name}}</td>
-      <td> {{pais.capital}}</td>
-      <td> {{pais.formation_year}}</td>
-    </tr>
-  </tbody>
-</table>
+<div class="container-fluid">
+  <div class="col">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Capital</th>
+          <th scope="col">Año de conformación</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pais of paises" >
+          <td (click)="onSelected(pais)">{{ pais.id }}</td>
+          <td>{{ pais.name }}</td>
+          <td>{{ pais.capital }}</td>
+          <td>{{ pais.formation_year }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      El pais más antiguo del listado es {{ paisMayor }} y fue conformado en
+      {{ anioMayor }}
+    </p>
+  </div>
+  <div class="col">
+    <div class="selected-pais rounded" *ngIf="selected">
+      <app-pais-detail [paisDetail]="selectedPais"> </app-pais-detail>
+    </div>
+  </div>
+</div>
